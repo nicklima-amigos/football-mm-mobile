@@ -9,9 +9,9 @@ import LoadingView from "../../common/components/loading/view";
 
 const SignInView = () => {
   const {
-    email,
+    usernameOrEmail,
     password,
-    setEmail,
+    setUsernameOrEmail,
     setPassword,
     onSubmit,
     onClick,
@@ -32,8 +32,8 @@ const SignInView = () => {
               props={{
                 label: "E-mail",
                 placeholder: "type e-mail here",
-                value: email,
-                setValue: setEmail,
+                value: usernameOrEmail,
+                setValue: setUsernameOrEmail,
               }}
             />
             <TextInputView
