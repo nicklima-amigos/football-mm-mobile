@@ -1,15 +1,15 @@
 import client from "./client";
 
 export interface signInDTO {
-  email: string;
+  usernameOrEmail: string;
   password: string;
 }
 
-export const signIn = async ({email, password}: signInDTO) => {
+export const signIn = async ({usernameOrEmail, password}: signInDTO) => {
   const {data} = await client.post<any>("/auth/signin", {
-    email,
+    usernameOrEmail,
     password,
   });
-  console.log("data", data);
+  console.log({data});
   return data;
 };
