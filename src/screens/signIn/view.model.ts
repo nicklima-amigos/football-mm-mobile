@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {Alert} from "react-native";
 import {SignInViewModel} from "./models";
 import {useNavigation} from "@react-navigation/native";
@@ -16,12 +16,12 @@ const useSignInViewModel = (): SignInViewModel => {
 
   const signInState = useAppSelector((state) => state.signIn);
 
-  const [email, setEmail] = useState<string>("");
+  const [usernameOrEmail, setUsernameOrEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const onSubmit = async () => {
     try {
       dispatch(signInStart());
-      const response = await signIn({email, password});
+      const response = await signIn({usernameOrEmail, password});
       console.log("response", response);
       dispatch(signInSuccess(response));
     } catch (e: any) {
@@ -29,7 +29,7 @@ const useSignInViewModel = (): SignInViewModel => {
       dispatch(signInFailure(e.message || "Something went wrong"));
       Alert.alert("Oops!", "Something went wrong");
     } finally {
-      setEmail("");
+      setUsernameOrEmail("");
       setPassword("");
     }
   };
@@ -44,8 +44,8 @@ const useSignInViewModel = (): SignInViewModel => {
   };
 
   return {
-    email,
-    setEmail,
+    usernameOrEmail,
+    setUsernameOrEmail,
     password,
     setPassword,
     onSubmit,
